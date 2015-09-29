@@ -1,12 +1,8 @@
 var express = require('express');
 var app = express();
 
-app.get('/op/:operation/:number1/:number2', function (req, res) {
-  var operation = (req.params.operation).toLowerCase();
-  var num1 = Number(req.params.number1);
-  var num2 = Number(req.params.number2);
-  var solution = 0;
-  function operator(operation, num1, num2) {
+var solution = 0;
+function operator(operation, num1, num2) {
     switch(operation) {
       case "add":
         solution = num1 + num2;
@@ -24,6 +20,12 @@ app.get('/op/:operation/:number1/:number2', function (req, res) {
         solution = null;
     }
   }
+
+app.get('/op/:operation/:number1/:number2', function (req, res) {
+  var operation = (req.params.operation).toLowerCase();
+  var num1 = Number(req.params.number1);
+  var num2 = Number(req.params.number2);
+  
   operator(operation, num1, num2);
   if (solution != null) {
     res.json({"operator": operation,
