@@ -1,0 +1,14 @@
+{
+  "name": "expressjs-workshop",
+  "version": "1.0.0",
+  "description": "ExpressJS Workshop for DecodeMTL Full-Stack Bootcamp",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "DecodeMTL <hello@decodemtl.com>",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.13.3"
+  }
+}
