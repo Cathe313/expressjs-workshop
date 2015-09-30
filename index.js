@@ -48,12 +48,12 @@ app.get('/entry/search', function (req, res) {
   for (var i = 1; i <= entriesKeys.length; i ++) {
     if (query.firstName != null && query.firstName.toLowerCase() === entries[i].firstName.toLowerCase()) {
       if (matchingEntries.indexOf(entries[i]) === -1) {
-      matchingEntries.push(entries[i]);
+        matchingEntries.push(entries[i]);
       }
     }
     if (query.lastName != null && query.lastName.toLowerCase() === entries[i].lastName.toLowerCase()) {
       if (matchingEntries.indexOf(entries[i]) === -1) {
-      matchingEntries.push(entries[i]);
+        matchingEntries.push(entries[i]);
       }
     }
     
@@ -62,13 +62,13 @@ app.get('/entry/search', function (req, res) {
     emailsArray.map(function(emailObject){
       if (query.emailsType != null && query.emailsType.toLowerCase() === emailObject.type) {
         if (matchingEntries.indexOf(entries[i]) === -1) {
-      matchingEntries.push(entries[i]);
-      }
+          matchingEntries.push(entries[i]);
+        }
       }
       if (query.emailsAddress != null && query.emailsAddress.toLowerCase() === emailObject.address) {
         if (matchingEntries.indexOf(entries[i]) === -1) {
-      matchingEntries.push(entries[i]);
-      }
+          matchingEntries.push(entries[i]);
+        }
       }
     });
   }
