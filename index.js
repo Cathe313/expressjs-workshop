@@ -42,24 +42,37 @@ var entries = {
 app.get('/entry/search', function (req, res) {
   var url_parts = url.parse(req.url, true);
   var query = url_parts.query;
-  var firstName = query.firstName;
-  var lastName = query.lastName;
-  var emailType = query.emailType;
-  var emailAddress = query.emailAddress;
-  
-
-  var queries = [];
+  var matchingEntries = [];
   var entriesKeys = Object.keys(entries);
   
-  for (var i = 0; i < entriesKeys;length; i ++) {
-    if 
+  //The code below searches the address book object for corresponding entries:
+  for (var i = 1; i <= entriesKeys.length; i ++) {
+    if (query.firstName != null && query.firstName.toLowerCase() === entries[i].firstName.toLowerCase()) {
+      matchingEntries.push(entries[i]);
+    }
+    if (query.lastName != null && query.lastName.toLowerCase() === entries[i].lastName.toLowerCase()) {
+      matchingEntries.push(entries[i]);
+    }
+    
+    var emailsArray = entries[i].emails;
+    
+    emailsArray.map(function(){
+      if (query.emailsType != null && query.emailsType.toLowerCase() === emailsArray.type) {
+        matchingEntries.push(entries[i]);
+      }
+      if (query.emailsAddress != null && query.emailsAddress.toLowerCase() === emailsArray.address) {
+        matchingEntries.push(entries[i]);
+      }
+    });
   }
-  
-  res.send(firstName);
-  
-  
-  
-  
+
+  //The code below sends the resuling array of entries to the user:
+  if (matchingEntries[0] != null) {
+    res.send(matchingEntries);
+  }
+  else {
+    res.send("There were no matching entries.");
+  }
 
 });
 
