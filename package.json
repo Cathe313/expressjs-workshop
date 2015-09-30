@@ -9,6 +9,8 @@
   "author": "DecodeMTL <hello@decodemtl.com>",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.13.3"
+    "express": "^4.13.3",
+    "request": "^2.64.0",
+    "url": "^0.11.0"
   }
 }
