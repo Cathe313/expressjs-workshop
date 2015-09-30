@@ -56,11 +56,11 @@ app.get('/entry/search', function (req, res) {
     
     var emailsArray = entries[i].emails;
     
-    emailsArray.map(function(){
-      if (query.emailsType != null && query.emailsType.toLowerCase() === emailsArray.type) {
+    emailsArray.map(function(emailObject){
+      if (query.emailsType != null && query.emailsType.toLowerCase() === emailObject.type) {
         matchingEntries.push(entries[i]);
       }
-      if (query.emailsAddress != null && query.emailsAddress.toLowerCase() === emailsArray.address) {
+      if (query.emailsAddress != null && query.emailsAddress.toLowerCase() === emailObject.address) {
         matchingEntries.push(entries[i]);
       }
     });
