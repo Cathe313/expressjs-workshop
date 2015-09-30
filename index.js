@@ -2,7 +2,6 @@
 var express = require('express');
 var app = express();
 var url = require('url');
-var request = require('request');
 
 var entries = {
   1: {
@@ -48,20 +47,28 @@ app.get('/entry/search', function (req, res) {
   //The code below searches the address book object for corresponding entries:
   for (var i = 1; i <= entriesKeys.length; i ++) {
     if (query.firstName != null && query.firstName.toLowerCase() === entries[i].firstName.toLowerCase()) {
+      if (matchingEntries.indexOf(entries[i]) === -1) {
       matchingEntries.push(entries[i]);
+      }
     }
     if (query.lastName != null && query.lastName.toLowerCase() === entries[i].lastName.toLowerCase()) {
+      if (matchingEntries.indexOf(entries[i]) === -1) {
       matchingEntries.push(entries[i]);
+      }
     }
     
     var emailsArray = entries[i].emails;
     
     emailsArray.map(function(emailObject){
       if (query.emailsType != null && query.emailsType.toLowerCase() === emailObject.type) {
-        matchingEntries.push(entries[i]);
+        if (matchingEntries.indexOf(entries[i]) === -1) {
+      matchingEntries.push(entries[i]);
+      }
       }
       if (query.emailsAddress != null && query.emailsAddress.toLowerCase() === emailObject.address) {
-        matchingEntries.push(entries[i]);
+        if (matchingEntries.indexOf(entries[i]) === -1) {
+      matchingEntries.push(entries[i]);
+      }
       }
     });
   }
